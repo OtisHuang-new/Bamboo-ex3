@@ -31,20 +31,23 @@ public:
 
 class Post {
 private:
-    int postID;
-    int authorID;
-    //vector<Comment*> commentList;
-public:
-    int reaction;
+    static int postId;
+    int authorId;
+    bool ispublic;
+    int reactions;
     int shares;
     Date timestamp;
     string content;
-
-    Post(int authorID, string content);
+    //vector<Comment*> commentList;
+public:
+    Post();
+    Post(int authorId, string content);
+    Post(const Post& other);
     ~Post();
 
     void showPost();
-    //void addComment();
+    void addComment();
+    void like();
     //void removeCommnent()
     //void getCommentList
 };
