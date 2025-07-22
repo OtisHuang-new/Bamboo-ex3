@@ -1,56 +1,7 @@
 #include <iostream>
-#include<vector>
+#include <vector>
+#include <iomanip>
 using namespace std;
-
-
-class User {
-private:
-    static int userId;
-    string userName;
-    string password;
-    vector<User*> friends;
-    vector<Post*> posts;
-    //vector<Post*> newsFeed;
-public:
-    User();
-    User(string userName, string password);
-    User(const User &other);
-    ~User();
-
-    string getUserName() const;
-    void addFriend(User* newFriend);
-    void removeFriend(User* aFriend);
-    vector<User*> getFriendList() const;
-    User* searchFriend(User* Friend);
-    void addPost(Post* newPost);
-    void removePost(Post* aPost);
-    vector<Post*> postList() const;
-    //void getNewsfeed();
-
-};
-
-class Post {
-private:
-    static int postId;
-    int authorId;
-    bool ispublic;
-    int reactions;
-    int shares;
-    Date timestamp;
-    string content;
-    //vector<Comment*> commentList;
-public:
-    Post();
-    Post(int authorId, string content);
-    Post(const Post& other);
-    ~Post();
-
-    void showPost();
-    void addComment();
-    void like();
-    //void removeCommnent()
-    //void getCommentList
-};
 
 class Date {
 private:
@@ -90,8 +41,52 @@ public:
     void showPost();
 };
 
-class UserManager {
-    private:
-        vector<User*> users;
+class Post {
+private:
+    static int postIdCount;
+    int postId;
+    int authorId;
+    bool ispublic;
+    int reactions;
+    int shares;
+    Date timestamp;
+    string content;
+    //vector<Comment*> commentList;
+public:
+    Post();
+    Post(int authorId, string content);
+    Post(const Post& other);
+    ~Post();
+
+    void showPost();
+    void addComment();
+    void like();
+    //void removeCommnent()
+    //void getCommentList
+};
+
+class User {
+private:
+    static int userId;
+    string userName;
+    string password;
+    vector<User*> friends;
+    vector<Post*> posts;
+    //vector<Post*> newsFeed;
+public:
+    User();
+    User(string userName, string password);
+    User(const User &other);
+    ~User();
+
+    string getUserName() const;
+    void addFriend(User* newFriend);
+    void removeFriend(User* aFriend);
+    vector<User*> getFriendList() const;
+    User* searchFriend(User* Friend);
+    void addPost(Post* newPost);
+    void removePost(Post* aPost);
+    vector<Post*> postList() const;
+    //void getNewsfeed();
 
 };

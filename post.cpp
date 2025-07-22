@@ -1,7 +1,4 @@
 #include "social.h"
-#include <iostream>
-#include <vector>
-#include <ctime>
 using namespace std;
 
 // -postId:int
@@ -11,16 +8,17 @@ using namespace std;
 // -timestamp:Date
 // -content:string
 
+int Post::postIdCount = 0;
 Post::Post() {
-    postId++;
+    postId = ++postIdCount;
     authorId = 0;
-    ispublic = 1;
+    ispublic = true;
     reactions = 0;
     timestamp = Date();
     content = "";
 };
 Post::Post(int authorId, string content) {
-    postId++;
+    postId = ++postIdCount;
     this->authorId = authorId;
     ispublic = 1;
     reactions = 0;
@@ -28,7 +26,7 @@ Post::Post(int authorId, string content) {
     this->content = content;
 };
 Post::Post(const Post& other) {
-    postId++;
+    postId = ++postIdCount;
     authorId = other.authorId;
     ispublic = other.ispublic;
     reactions = other.reactions;
@@ -36,14 +34,18 @@ Post::Post(const Post& other) {
     content = other.content;
 };
 void Post::showPost() {
-    cout<<"Author: "<<authorId<<"; ";
-    cout<<"Accessibility: "<<ispublic ? "public; " : "private; ";
-    cout<<"Created at: "<<timestamp<<"\n";
-    cout<<content<<"\n";
-    cout<<reactions<<"\n";
+    cout<<"------------------------------------------------------------------------\n";
+    cout<<"Author: "<<authorId<<setw(20)<<"Accessibility: "<< (ispublic ? "public" : "private")<<setw(20)<<"Created at: "<<this->timestamp;
+    cout<<"    "<<content<<"\n";
+    cout<<reactions<<" Likes"<<"\n";
+    cout<<"------------------------------------------------------------------------\n";
 }
+void Post::like() {
+    reactions++;
+}
+void Post::addComment() {
 
+}
 Post::~Post() {
 
 };
-
