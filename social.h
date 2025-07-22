@@ -91,3 +91,13 @@ public:
     //void getNewsfeed();
 
 };
+
+class Network {
+    private:
+        vector<User*> users;
+    public:
+        Network();
+        User* searchUserByUserName(string name);
+        void signUp(string name, string pwd);
+        void signIn(string name, string pwd);
+};
