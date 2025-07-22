@@ -9,6 +9,7 @@ using namespace std;
 // -content:string
 
 int Post::postIdCount = 0;
+
 Post::Post() {
     postId = ++postIdCount;
     authorId = 0;
