@@ -37,7 +37,7 @@ void Network::signIn(string name, string pwd){
         currentPost = nullptr;
         cout<<"Sign in successfully!\n";
     } else {
-        cout<<"Sign in successfully. Incorrect!\n";
+        cout<<"Sign in successfully. Incorrect password or user name!\n";
     }
 }
 
@@ -105,8 +105,11 @@ void Network::accessPost(int postId){
         for(Post* post : posts){
             if(post->getPostId() == postId){
                 currentPost = post;
+                cout<<"Accessed post "<<postId<<"\n";
+                return;
             }
         }
+        cout<<"Post ID not found\n";
     }
 }
 

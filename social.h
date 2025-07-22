@@ -26,21 +26,6 @@ public:
     void addMinutes(int minutes);
 };
 
-class Comment {
-private:
-    int commentID;
-    int postID;
-    int commenterID;
-public:
-    Date timestamp;
-    string content;
-
-    Comment(int postID, int commentorID, string content);
-    ~Comment();
-
-    void showPost();
-};
-
 class Post {
 private:
     static int postIdCounter;
@@ -51,7 +36,6 @@ private:
     int shares;
     Date timestamp;
     string content;
-    //vector<Comment*> commentList;
 public:
     Post();
     Post(string authorName, string content);
@@ -62,8 +46,6 @@ public:
     int getPostId();
     void addComment();
     void like();
-    //void removeCommnent()
-    //void getCommentList
 };
 
 class User {
@@ -74,7 +56,6 @@ private:
     string password;
     vector<User*> friends;
     vector<Post*> posts;
-    //vector<Post*> newsFeed;
 public:
     User();
     User(string userName, string password);

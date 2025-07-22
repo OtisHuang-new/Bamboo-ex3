@@ -5,25 +5,29 @@ bool running = true;
 void signUp(Network &object){
     string name;
     string pwd;
-    cout<<"Enter your user name: "; cin>>name;
-    cout<<"Enter your password: "; cin>>pwd;
+    getline(cin,name);
+    cout<<"Enter your user name: "; getline(cin,name);
+    cout<<"Enter your password: "; getline(cin,pwd);
     object.signUp(name,pwd);
 }
 void signIn(Network &object){
     string name;
     string pwd;
-    cout<<"Enter your user name: "; cin>>name;
-    cout<<"Enter your password: "; cin>>pwd;
+    getline(cin,name);
+    cout<<"Enter your user name: "; getline(cin,name);
+    cout<<"Enter your password: "; getline(cin,pwd); 
     object.signIn(name,pwd);
 }
 void addFriend(Network &object){
     string name;
-    cout<<"Enter your friend's name: "; cin>>name;
+    getline(cin,name);
+    cout<<"Enter your friend's name: "; getline(cin,name);
     object.addFriend(name);
 }
 void removeFriend(Network &object){
     string name;
-    cout<<"Enter your friend's name: "; cin>>name;
+    getline(cin,name);
+    cout<<"Enter your friend's name: "; getline(cin,name);
     object.removeFriend(name);
 }
 void showFriendList (Network &object) {
@@ -31,7 +35,8 @@ void showFriendList (Network &object) {
 }
 void addPost(Network &object){
     string content;
-    cout<<"What do you want to share: "; cin>>content;
+    getline(cin,content);
+    cout<<"What do you want to share: "; getline(cin,content);
     object.addPost(content);
 }
 void removePost(Network &object) {
@@ -50,7 +55,11 @@ void accessPost(Network &object) {
 void showNewsfeed(Network &object) {
     object.showNewsfeed();
 }
+void likePost(Network &object) {
+    object.likePost();
+}
 void displayAction(Network &object) {
+    cout<<"\n\n\n";
     cout<<"User: "<<object.getCurrentUserName()<<"     "<<"Post: "<<object.getCurrentPostId()<<"\n";
     cout<<"---------Main_Actions---------\n";
     cout<<"1.  Sign up\n";
@@ -63,13 +72,14 @@ void displayAction(Network &object) {
     cout<<"8.  Show Post List\n";
     cout<<"9.  Access Post\n";
     cout<<"10. Show Newsfeed\n";
-    cout<<"11. Quit\n";
+    cout<<"11. Like Post\n";
+    cout<<"12. Quit\n";
     cout<<"-------------------------------\n";
     int act = 0;
     do{
         cout<<"Action: "; 
         cin>>act;
-    }while(act < 1 || act > 11); 
+    }while(act < 1 || act > 12); 
     
     switch(act){
         case 1:
@@ -103,6 +113,8 @@ void displayAction(Network &object) {
             showNewsfeed(object);
             break;
         case 11:
+            
+        case 12:
             running = false;
             break;
     }
