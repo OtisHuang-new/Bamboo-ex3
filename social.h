@@ -1,6 +1,7 @@
-#include<iostream>
+#include <iostream>
 #include<vector>
 using namespace std;
+
 
 class User {
 private:
@@ -8,7 +9,7 @@ private:
     string userName;
     string password;
     vector<User*> friends;
-    vector<Post*> posts;
+    //vector<Post*> posts;
     //vector<Post*> newsFeed;
 public:
     User();
@@ -16,8 +17,7 @@ public:
     User(const User &other);
     ~User();
 
-    void signIn(string userName, string password);
-    void signUp(string userName, string password);
+
     void addFriend(User* newFriend);
     void removeFriend(User* aFriend);
     vector<User*> getFriendList() const;
@@ -84,4 +84,10 @@ public:
     ~Comment();
 
     void showPost();
+};
+
+class UserManager {
+    private:
+        vector<User*> users;
+
 };
