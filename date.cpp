@@ -70,12 +70,7 @@ Date::~Date() {
     delete hour;
     delete minute;
 }
-/*
-void Date::input(istream& in);
-void Date::output(ostream& out) const;
-void Date::readFromFile(ifstream& fin);
-void Date::writeToFile(ofstream& fout) const;
-*/
+
 bool Date::isLeapYear(){
     if(!this) return false;
     return (*year % 4 == 0 && *year % 100 != 0 || *year % 400 == 0);
@@ -108,12 +103,6 @@ void Date::Validate() {
     while(*month > 12) {
         *month -= 12;
         *year++;
-    }
-}
-void Date::addMinutes(int minutes) {
-    if(this) {
-        *this->minute += minutes;
-        this->Validate();
     }
 }
 

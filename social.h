@@ -17,13 +17,11 @@ public:
     Date(const Date& other);
     Date& operator=(const Date& other);
     ~Date();
+
     friend istream& operator >> (istream& in, Date& date);
     friend ostream& operator << (ostream& out, const Date& date);
-    void readFromFile(ifstream& fin);
-    void writeToFile(ofstream& fout) const;
     bool isLeapYear();
     void Validate();
-    void addMinutes(int minutes);
 };
 
 class Post {
@@ -33,7 +31,6 @@ private:
     string authorName;
     bool ispublic;
     int reactions;
-    int shares;
     Date timestamp;
     string content;
 public:
@@ -42,9 +39,8 @@ public:
     Post(const Post& other);
     ~Post();
 
-    void showPost();
     int getPostId();
-    void addComment();
+    void showPost();
     void like();
 };
 
