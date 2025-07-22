@@ -1,9 +1,13 @@
 #include "social.h"
+#include<cstring>
 
 Network::Network(){
     currentAccount = nullptr;
     currentPost = nullptr;
 }
+
+string Network::getCurrentUserName() const {return currentAccount ? currentAccount->getUserName() : "Unknown";}
+string Network::getCurrentPostId() const {return currentPost ? to_string(currentPost->getPostId()) : "Unknown";}
 
 User* Network::searchUserByUserName(string username) {
     for(int i = 0; i < users.size(); i++) {

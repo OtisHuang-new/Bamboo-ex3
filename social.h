@@ -101,6 +101,8 @@ class Network {
         Post* currentPost;
     public:
         Network();
+        string getCurrentUserName() const;
+        string getCurrentPostId() const;
         User* searchUserByUserName(string name);
         void signUp(string name, string pwd);
         void signIn(string name, string pwd);
