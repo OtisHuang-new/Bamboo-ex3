@@ -11,15 +11,15 @@ int Post::postIdCounter = 0;
 
 Post::Post() {
     postId = ++postIdCounter;
-    authorId = 0;
+    authorName = "Unknown";
     ispublic = true;
     reactions = 0;
     timestamp = Date();
     content = "";
 };
-Post::Post(int authorId, string content) {
+Post::Post(string authorName, string content) {
     postId = ++postIdCounter;
-    this->authorId = authorId;
+    this->authorName = authorName;
     ispublic = 1;
     reactions = 0;
     timestamp = Date();
@@ -27,27 +27,26 @@ Post::Post(int authorId, string content) {
 };
 Post::Post(const Post& other) {
     postId = ++postIdCounter;
-    authorId = other.authorId;
+    authorName = other.authorName;
     ispublic = other.ispublic;
     reactions = other.reactions;
     timestamp = other.timestamp;
     content = other.content;
 };
 void Post::showPost() {
-    cout<<"------------------------------------------------------------------------\n";
-    cout<<"Author: "<<authorId<<setw(20)
+    cout<<"---------------------------Post_ID_"<<postId<<"-------------------------------------\n";
+    cout<<"Author: "<<authorName<<setw(20)
         <<"Accessibility: "<< (ispublic ? "public" : "private")<<setw(20)
         <<"Created at: "<<this->timestamp;
     cout<<"    "<<content<<"\n";
     cout<<reactions<<" Likes"<<"\n";
-    cout<<"------------------------------------------------------------------------\n";
+    cout<<"-------------------------------------------------------------------------\n";
 }
-void Post::like() {
-    reactions++;
-}
-void Post::addComment() {
 
-}
+int Post::getPostId() {return this->postId;}
+
+void Post::like() {reactions++;}
+
 Post::~Post() {
 
 };

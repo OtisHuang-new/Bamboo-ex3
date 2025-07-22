@@ -52,7 +52,7 @@ void User::removeFriend(User* aFriend) {
         User* mate = this->friends.at(i);
         if(mate == aFriend) {
             this->friends.erase(this->friends.begin()+i);
-            cout << "You and " << aFriend->getUserName() << "are not friends.\n";
+            cout << "You and " << aFriend->getUserName() << " are not friends.\n";
             return;
         }
     }
@@ -64,7 +64,30 @@ vector<User*> User::getFriendList() const {
 string User::getUserName() const {
     return this->userName;
 }
-// void User::addPost(Post* newPost);
-// void User::removePost(Post* aPost);
-// vector<Post*> User::postList() const;
-// void getNewsfeed();
+int User::getUserId() const {
+    return this->userId;
+}
+
+Post* User::addPost(string author, string content){
+    Post* thePost = new Post(author,content);
+    posts.push_back(thePost);
+    cout<<"Add post successfully\n";
+    return thePost;
+}
+void User::removePost(int postId){
+    int n = posts.size();
+    for(int i = 0; i < n; i++){
+        if(posts[i]->getPostId() == postId){
+            delete posts[i];
+            posts.erase(posts.begin()+i);
+            cout<<"Remove post successfully\n";
+            return;
+        }
+    }
+    cout<<"Post ID not found\n";
+}
+vector<Post*> User::getPostList() const {
+    return this->posts;
+}
+
+

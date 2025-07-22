@@ -45,7 +45,7 @@ class Post {
 private:
     static int postIdCounter;
     int postId;
-    int authorId;
+    string authorName;
     bool ispublic;
     int reactions;
     int shares;
@@ -54,11 +54,12 @@ private:
     //vector<Comment*> commentList;
 public:
     Post();
-    Post(int authorId, string content);
+    Post(string authorName, string content);
     Post(const Post& other);
     ~Post();
 
     void showPost();
+    int getPostId();
     void addComment();
     void like();
     //void removeCommnent()
@@ -82,25 +83,35 @@ public:
 
     bool authorize(string name, string key);
     string getUserName() const;
+    int getUserId() const;
     void addFriend(User* newFriend);
     void removeFriend(User* aFriend);
     vector<User*> getFriendList() const;
     bool isFriend(User* Friend);
-    // void addPost(Post* newPost);
-    // void removePost(Post* aPost);
-    // vector<Post*> postList() const;
-    //void getNewsfeed();
-
+    Post* addPost(string author, string content);
+    void removePost(int postId);
+    vector<Post*> getPostList() const;
 };
 
 class Network {
     private:
         vector<User*> users;
+        vector<Post*> posts;
         User* currentAccount;
+        Post* currentPost;
     public:
+        Network();
         User* searchUserByUserName(string name);
         void signUp(string name, string pwd);
         void signIn(string name, string pwd);
+        bool isSignedIn();
         void addFriend(string name);
         void removeFriend(string name);
+        void showFriendList();
+        void addPost(string content);
+        void removePost(int postId);
+        void showPostList();
+        void accessPost(int postId);
+        void likePost();
+        void showNewsfeed();
 };
