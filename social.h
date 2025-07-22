@@ -9,7 +9,7 @@ private:
     string userName;
     string password;
     vector<User*> friends;
-    //vector<Post*> posts;
+    vector<Post*> posts;
     //vector<Post*> newsFeed;
 public:
     User();
@@ -17,10 +17,11 @@ public:
     User(const User &other);
     ~User();
 
-
+    string getUserName() const;
     void addFriend(User* newFriend);
     void removeFriend(User* aFriend);
     vector<User*> getFriendList() const;
+    User* searchFriend(User* Friend);
     void addPost(Post* newPost);
     void removePost(Post* aPost);
     vector<Post*> postList() const;
