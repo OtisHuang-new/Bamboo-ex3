@@ -36,7 +36,9 @@ Post::Post(const Post& other) {
 };
 void Post::showPost() {
     cout<<"------------------------------------------------------------------------\n";
-    cout<<"Author: "<<authorId<<setw(20)<<"Accessibility: "<< (ispublic ? "public" : "private")<<setw(20)<<"Created at: "<<this->timestamp;
+    cout<<"Author: "<<authorId<<setw(20)
+        <<"Accessibility: "<< (ispublic ? "public" : "private")<<setw(20)
+        <<"Created at: "<<this->timestamp;
     cout<<"    "<<content<<"\n";
     cout<<reactions<<" Likes"<<"\n";
     cout<<"------------------------------------------------------------------------\n";
