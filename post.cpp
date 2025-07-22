@@ -1,4 +1,4 @@
-//#include "social.h"
+#include "social.h"
 
 // -postId:int
 // -authorId:int
