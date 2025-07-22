@@ -1,7 +1,5 @@
 #include "social.h"
 
-
-
 User* Network::searchUserByUserName(string username) {
     for(int i = 0; i < users.size(); i++) {
         if(username == users.at(i)->getUserName())
@@ -16,6 +14,24 @@ void Network::signUp(string name, string pwd) {
         return;
     }
     User* newUser = new User(name,pwd);
-    
+    users.push_back(newUser);
+    cout<<"Sign up successfully!\n";
 }
-void signIn(string name, string pwd);
+void Network::signIn(string name, string pwd){
+    User* check = searchUserByUserName(name);
+    if(!check)  {
+        cout << "Sign in unsuccessfully. User not exist!\n";
+        return;
+    }
+    currentAccount = check;
+    cout<<"Sign in successfully!\n";
+}
+
+void Network::addFriend(string username) {
+    User* friendAccount = searchUserByUserName(username);
+    if(!friendAccount) {
+        cout<<"Friend not found!"; 
+        return;
+    }
+    currentAccount->addFriend(friendAccount);
+}

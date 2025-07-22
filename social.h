@@ -95,9 +95,11 @@ public:
 class Network {
     private:
         vector<User*> users;
+        User* currentAccount;
     public:
         Network();
         User* searchUserByUserName(string name);
         void signUp(string name, string pwd);
         void signIn(string name, string pwd);
+        void addFriend(string name);
 };
