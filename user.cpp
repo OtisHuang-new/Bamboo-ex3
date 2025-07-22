@@ -28,15 +28,19 @@ User::User(const User& other) {
 
 User::~User(){}
 
-User* User::searchFriend(User* Friend) {
+bool User::authorize(string name, string key) {
+    return (name == userName)&&(key == password);
+}
+
+bool User::isFriend(User* Friend) {
     for (User* mate : getFriendList()) {
-        if(Friend == mate) 
-            return mate;
+        if(Friend == mate)
+            return true;
     }
-    return nullptr;
+    return false;
 }
 void User::addFriend(User* newFriend) {
-    if(searchFriend(newFriend)) {
+    if(isFriend(newFriend)) {
         cout << "You and " << newFriend->getUserName() << "are already friends.\n";
         return;
     }
@@ -47,11 +51,12 @@ void User::removeFriend(User* aFriend) {
     for(int i = 0; i < getFriendList().size(); i++) {
         User* mate = this->friends.at(i);
         if(mate == aFriend) {
-            this->friends.erase(this->friends.begin());
+            this->friends.erase(this->friends.begin()+i);
+            cout << "You and " << aFriend->getUserName() << "are not friends.\n";
             return;
         }
-        cout << "You and " << aFriend->getUserName() << "are not friends.\n";
     }
+    cout<<"Friend not found!\n";
 }
 vector<User*> User::getFriendList() const {
     return this->friends;
@@ -63,8 +68,3 @@ string User::getUserName() const {
 // void User::removePost(Post* aPost);
 // vector<Post*> User::postList() const;
 // void getNewsfeed();
-int main() {
-    User Bamboo;
-    User Doikhan(Bamboo);
-    cout<<Doikhan.getUserName();
-}

@@ -80,11 +80,12 @@ public:
     User(const User &other);
     ~User();
 
+    bool authorize(string name, string key);
     string getUserName() const;
     void addFriend(User* newFriend);
     void removeFriend(User* aFriend);
     vector<User*> getFriendList() const;
-    User* searchFriend(User* Friend);
+    bool isFriend(User* Friend);
     // void addPost(Post* newPost);
     // void removePost(Post* aPost);
     // vector<Post*> postList() const;
@@ -97,9 +98,9 @@ class Network {
         vector<User*> users;
         User* currentAccount;
     public:
-        Network();
         User* searchUserByUserName(string name);
         void signUp(string name, string pwd);
         void signIn(string name, string pwd);
         void addFriend(string name);
+        void removeFriend(string name);
 };

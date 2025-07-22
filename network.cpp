@@ -23,8 +23,12 @@ void Network::signIn(string name, string pwd){
         cout << "Sign in unsuccessfully. User not exist!\n";
         return;
     }
-    currentAccount = check;
-    cout<<"Sign in successfully!\n";
+    if(check->authorize(name,pwd)){
+        currentAccount = check;
+        cout<<"Sign in successfully!\n";
+    } else {
+        cout<<"Sign in successfully. Incorrect!\n";
+    }
 }
 
 void Network::addFriend(string username) {
@@ -34,4 +38,13 @@ void Network::addFriend(string username) {
         return;
     }
     currentAccount->addFriend(friendAccount);
+}
+
+void Network::removeFriend(string username) {
+    User* friendAccount = searchUserByUserName(username);
+    if(!friendAccount) {
+        cout<<"Friend not found!"; 
+        return;
+    }
+    currentAccount->removeFriend(friendAccount);
 }
