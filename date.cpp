@@ -1,5 +1,4 @@
-#include "social.h"
-#include <iomanip>
+//#include "social.h"
 Date::Date() {
     day = new int(1);
     month = new int(1);

@@ -1,5 +1,4 @@
-#include "social.h"
-using namespace std;
+//#include "social.h"
 
 // -postId:int
 // -authorId:int
@@ -8,10 +7,10 @@ using namespace std;
 // -timestamp:Date
 // -content:string
 
-int Post::postIdCount = 0;
+int Post::postIdCounter = 0;
 
 Post::Post() {
-    postId = ++postIdCount;
+    postId = ++postIdCounter;
     authorId = 0;
     ispublic = true;
     reactions = 0;
@@ -19,7 +18,7 @@ Post::Post() {
     content = "";
 };
 Post::Post(int authorId, string content) {
-    postId = ++postIdCount;
+    postId = ++postIdCounter;
     this->authorId = authorId;
     ispublic = 1;
     reactions = 0;
@@ -27,7 +26,7 @@ Post::Post(int authorId, string content) {
     this->content = content;
 };
 Post::Post(const Post& other) {
-    postId = ++postIdCount;
+    postId = ++postIdCounter;
     authorId = other.authorId;
     ispublic = other.ispublic;
     reactions = other.reactions;

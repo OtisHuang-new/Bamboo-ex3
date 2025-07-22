@@ -43,7 +43,7 @@ public:
 
 class Post {
 private:
-    static int postIdCount;
+    static int postIdCounter;
     int postId;
     int authorId;
     bool ispublic;
@@ -67,7 +67,8 @@ public:
 
 class User {
 private:
-    static int userId;
+    static int userIdCounter;
+    int userId;
     string userName;
     string password;
     vector<User*> friends;
@@ -84,9 +85,9 @@ public:
     void removeFriend(User* aFriend);
     vector<User*> getFriendList() const;
     User* searchFriend(User* Friend);
-    void addPost(Post* newPost);
-    void removePost(Post* aPost);
-    vector<Post*> postList() const;
+    // void addPost(Post* newPost);
+    // void removePost(Post* aPost);
+    // vector<Post*> postList() const;
     //void getNewsfeed();
 
 };

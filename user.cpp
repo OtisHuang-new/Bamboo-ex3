@@ -1,7 +1,6 @@
 #include "social.h"
-#include <iostream>
-#include<vector>
-using namespace std;
+#include "post.cpp"
+#include "date.cpp"
 //*************************
 // static int userId;     *
 // string userName;       *
@@ -10,26 +9,26 @@ using namespace std;
 // vector<Post*> posts;   *
 //*************************
 
-int User::userId = 0;
-User::User() : userName(""), password("") {
-    userId++;
-}
+int User::userIdCounter = 0;
+User::User() : userName(""), password(""), userId(++userIdCounter){}
 
 User::User(string username, string password) {
-    userId++;
+    this->userId   = ++userIdCounter;
     this->userName = username;
     this->password = password;
-
 }
 
 User::User(const User& other) {
-    userId++;
+    userId = ++userIdCounter;
     userName = other.userName;
     password = other.password;
     for(User* mate : other.friends) {
         friends.push_back(mate);
     }
 }
+
+User::~User(){}
+
 User* User::searchFriend(User* Friend) {
     for (User* mate : getFriendList()) {
         if(Friend == mate) 
@@ -38,7 +37,7 @@ User* User::searchFriend(User* Friend) {
     return nullptr;
 }
 void User::addFriend(User* newFriend) {
-    if(!searchFriend(newFriend)) {
+    if(searchFriend(newFriend)) {
         cout << "You and " << newFriend->getUserName() << "are already friends.\n";
         return;
     }
@@ -61,16 +60,12 @@ vector<User*> User::getFriendList() const {
 string User::getUserName() const {
     return this->userName;
 }
-void User::addPost(Post* newPost);
-void User::removePost(Post* aPost);
-vector<Post*> User::postList() const;
-    //void getNewsfeed();
+// void User::addPost(Post* newPost);
+// void User::removePost(Post* aPost);
+// vector<Post*> User::postList() const;
+// void getNewsfeed();
 int main() {
-    int* a = new int();
-    *a = 0;
-    vector<int*> vec;
-    vec.push_back(a);
-    cout << vec.at(0) << endl;
-    vec.erase(vec.begin());
-    cout << *a;
+    User Bamboo;
+    User Doikhan(Bamboo);
+    cout<<Doikhan.getUserName();
 }
