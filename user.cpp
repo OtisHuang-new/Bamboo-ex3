@@ -1,6 +1,5 @@
 #include "social.h"
-#include "post.cpp"
-#include "date.cpp"
+
 //*************************
 // static int userId;     *
 // string userName;       *
